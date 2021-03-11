@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'antd';
+import PropTypes from 'prop-types';
 import LeftControl from './LeftControl';
 import RightControl from './RightControl';
 import ImageDisplay from './ImageDisplay';
@@ -19,3 +20,9 @@ export default function View({ curImgIdx, images, updateImageIdx }) {
     </Row>
   );
 }
+
+View.propTypes = {
+  curImgIdx: PropTypes.number.isRequired,
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  updateImageIdx: PropTypes.func.isRequired,
+};

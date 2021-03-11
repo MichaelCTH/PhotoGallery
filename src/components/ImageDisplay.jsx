@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 export default function ImageDisplay({ curImgIdx, images }) {
   useEffect(() => {
-    console.log(images);
     const parent = document.querySelector('.ImgViwer a');
     const child = document.querySelector('.ImgViwer a img');
     parent.removeChild(child);
@@ -14,9 +14,14 @@ export default function ImageDisplay({ curImgIdx, images }) {
   });
   return (
     <div className="ImgViwer content">
-      <a href={images[curImgIdx].urls.full} target="_blank">
-        <img />
+      <a href={images[curImgIdx].urls.full} target="_blank" rel="noreferrer">
+        <img alt="from the url src" />
       </a>
     </div>
   );
 }
+
+ImageDisplay.propTypes = {
+  curImgIdx: PropTypes.number.isRequired,
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
